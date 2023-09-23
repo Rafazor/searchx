@@ -1,4 +1,4 @@
-import { ISuggestion } from '../types/index.ts';
+import { ISuggestion } from '../../shared/types/index.ts';
 
 interface IProps {
     onSelect: (listValue: string) => void;

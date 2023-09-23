@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import SuggestionListUi from './SuggestionListUi.tsx';
 import useOutsideClick from '../../shared/hooks/useOutsideClick.ts';
-import { ISuggestion } from '../types/index.ts';
+import { ISuggestion } from '../../shared/types/index.ts';
 
 interface IProps {
     value: string;

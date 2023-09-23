@@ -1,8 +1,10 @@
 import SearchFieldUi from '../ui/SearchFieldUi.tsx';
 import useSearchForm from '../hooks/useSearchForm.ts';
+import useSuggestions from '../hooks/useSuggestions.ts';
 
 export default function SearchFieldContainer() {
     const { value, setValue, onSubmit } = useSearchForm();
+    const { suggestions } = useSuggestions(value);
 
     return (
         <>
@@ -10,18 +12,7 @@ export default function SearchFieldContainer() {
                 value={value}
                 onChange={setValue}
                 onSubmit={onSubmit}
-                suggestions={[
-                    {
-                        id: '1',
-                        title: 'test',
-                        isHistory: true,
-                    },
-                    {
-                        id: '2',
-                        title: 'test2',
-                        isHistory: true,
-                    },
-                ]}
+                suggestions={suggestions}
             />
         </>
     );
