@@ -1,11 +1,8 @@
-import './App.css'
-import CoreContainer from "./modules/search/containers/CoreContainer.tsx";
+import './App.css';
+import CoreContainer from './modules/search/containers/CoreContainer.tsx';
 
 function App() {
-
-  return (
-      <CoreContainer />
-  )
+    return <CoreContainer />;
 }
 
-export default App
+export default App;

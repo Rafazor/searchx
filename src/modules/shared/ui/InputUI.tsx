@@ -1,4 +1,4 @@
-import {ChangeEvent} from "react";
+import { ChangeEvent } from 'react';
 
 interface IProps {
     value: string;
@@ -7,9 +7,7 @@ interface IProps {
 }
 
 export default function InputUi(props: IProps) {
-    const {value, onChange} = props;
+    const { value, onChange } = props;
 
-    return (
-        <input value={value} onChange={onChange}/>
-    )
+    return <input value={value} onChange={onChange} />;
 }
