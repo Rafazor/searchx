@@ -67,3 +67,30 @@ input[type='search']:focus {
     border-color: #1183d6;
     outline: none;
 }
+
+.searchWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.searchWrapper ul {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+
+.searchWrapper li {
+    padding: 5px 20px;
+    list-style: none;
+    text-align: left;
+}
+
+.searchWrapper li:hover {
+    background: lightgray;
+    cursor: pointer;
+}

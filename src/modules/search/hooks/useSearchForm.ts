@@ -1,20 +1,15 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { useState } from 'react';
 
 export default function useSearchForm() {
     const [value, setValue] = useState('');
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
-    };
-
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const onSubmit = (value: string) => {
         alert(value);
     };
 
     return {
         value,
-        onChange,
+        setValue,
         onSubmit,
     };
 }
