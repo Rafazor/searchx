@@ -14,8 +14,6 @@ export default function useSearchHistory() {
 
         if (hasSuggestion) return;
 
-        console.log({ suggestion, suggestionsHistory });
-
         setSuggestionsHistory([suggestion, ...suggestionsHistory]);
     };
 
@@ -23,8 +21,6 @@ export default function useSearchHistory() {
         const hasSuggestion = suggestionsHistory.find(
             history => history.id === suggestion.id,
         );
-
-        console.log({ hasSuggestion, suggestion });
 
         if (!hasSuggestion) return;
 

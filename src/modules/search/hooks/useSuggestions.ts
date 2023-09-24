@@ -14,6 +14,8 @@ export default function useSuggestions(
     const [suggestions, setSuggestions] = useState<ISuggestion>([]);
 
     useEffect(() => {
+        if (!value) return setSuggestions(suggestionsHistory);
+
         const elements = searchElements(MOCK_DATA, value);
         const suggestionsList = generateSuggestions(elements);
         const historySuggestionsList = searchSuggestions(
