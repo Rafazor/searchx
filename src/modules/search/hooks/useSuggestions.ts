@@ -12,7 +12,7 @@ export default function useSuggestions(value: string) {
 
         if (suggestionsList.length === 0) return setSuggestions([]);
 
-        setSuggestions(suggestionsList);
+        setSuggestions(suggestionsList.slice(0, 10));
     }, [value]);
 
     return {

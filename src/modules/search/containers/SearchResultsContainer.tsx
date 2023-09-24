@@ -1,13 +1,14 @@
 import { SearchContext } from '../providers/SearchProvider.tsx';
 import { useContext } from 'react';
+import SearchResultUi from '../ui/SearchResulElementUi.tsx';
 
 export default function SearchResultsContainer() {
     const { searchElements } = useContext(SearchContext);
 
     return (
-        <div>
+        <div className="searchElementWrapper">
             {searchElements.map(element => (
-                <div key={element.id}>{element.title}</div>
+                <SearchResultUi key={element.id} element={element} />
             ))}
         </div>
     );
