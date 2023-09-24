@@ -8,7 +8,7 @@ export default function SearchResultUi(props: IProps) {
     const { element } = props;
 
     return (
-        <div className={'searchElement'}>
+        <div className="searchElement">
             <a href={element.url} target="_blank">
                 {element.title}
             </a>

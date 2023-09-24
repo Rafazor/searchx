@@ -7,6 +7,7 @@ export default function CoreContainer() {
     return (
         <SearchProvider>
             <SearchLayoutUi>
+                <h1>SearchX</h1>
                 <SearchFieldContainer />
                 <SearchResultsContainer />
             </SearchLayoutUi>
