@@ -152,3 +152,8 @@ input.nosubmit {
     top: 12px;
     color: darkgray;
 }
+
+.analytics {
+    text-align: start;
+    width: 800px;
+}

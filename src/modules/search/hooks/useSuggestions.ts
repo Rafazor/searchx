@@ -5,7 +5,7 @@ import {
     searchElements,
     searchSuggestions,
 } from '../helpers/index.ts';
-import { MOCK_DATA } from '../../../data/searchData.ts';
+import { MOCK_DATA } from '../../../data/index.ts';
 
 export default function useSuggestions(
     value: string,

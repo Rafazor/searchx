@@ -6,13 +6,15 @@ import { useContext } from 'react';
 import { SearchContext } from '../providers/SearchProvider.tsx';
 
 export default function SearchFieldContainer() {
-    const { setSearchElements, setIsFirstSearch } = useContext(SearchContext);
+    const { setSearchElements, setIsFirstSearch, setExecutionTime } =
+        useContext(SearchContext);
     const { suggestionsHistory, saveSuggestion, removeSuggestion } =
         useSearchHistory();
     const { value, setValue, onSubmit } = useSearchForm(
         saveSuggestion,
         setSearchElements,
         setIsFirstSearch,
+        setExecutionTime,
     );
     const { suggestions } = useSuggestions(value, suggestionsHistory);
 
