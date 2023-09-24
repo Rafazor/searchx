@@ -3,6 +3,7 @@ import SuggestionListUi from './SuggestionListUi.tsx';
 import useOutsideClick from '../../shared/hooks/useOutsideClick.ts';
 import { ISuggestion } from '../../shared/types/index.ts';
 import { clsx } from 'clsx';
+import { FaSearch } from 'react-icons/fa';
 
 interface IProps {
     value: string;
@@ -47,6 +48,7 @@ export default function SearchFieldUi(props: IProps) {
             onSubmit={handleSubmit}
         >
             <div className="searchWrapper">
+                <FaSearch className="inputIcon" />
                 <input
                     onFocus={() => setIsSuggestionsOpen(true)}
                     ref={inputRef}
