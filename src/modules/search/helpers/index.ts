@@ -13,6 +13,14 @@ export function searchElements(elements: ISearchElement[], value: string) {
         element.title.toLowerCase().startsWith(value.toLowerCase()),
     );
 }
+export function searchResultElements(
+    elements: ISearchElement[],
+    value: string,
+) {
+    return elements.filter(element =>
+        element.title.toLowerCase().includes(value.toLowerCase()),
+    );
+}
 
 export function searchSuggestions(suggestions: ISuggestion[], value: string) {
     return suggestions.filter(suggestion =>

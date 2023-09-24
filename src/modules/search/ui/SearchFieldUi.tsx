@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import React, { FormEvent, useCallback, useRef, useState } from 'react';
 import SuggestionListUi from './SuggestionListUi.tsx';
 import useOutsideClick from '../../shared/hooks/useOutsideClick.ts';
 import { ISuggestion } from '../../shared/types/index.ts';
@@ -29,6 +29,14 @@ export default function SearchFieldUi(props: IProps) {
         setIsSuggestionsOpen(false);
     };
 
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        console.log('submit', event);
+        event.preventDefault();
+        inputRef.current?.blur();
+        onSubmit(event.target[0].value);
+        setIsSuggestionsOpen(false);
+    };
+
     useOutsideClick(wrapperRef, handleOutsideClick);
 
     return (
@@ -36,12 +44,7 @@ export default function SearchFieldUi(props: IProps) {
             ref={wrapperRef}
             autoComplete="off"
             className="searchForm nosubmit"
-            onSubmit={event => {
-                event.preventDefault();
-                inputRef.current?.blur();
-                onSubmit(value);
-                setIsSuggestionsOpen(false);
-            }}
+            onSubmit={handleSubmit}
         >
             <div className="searchWrapper">
                 <input
@@ -49,13 +52,15 @@ export default function SearchFieldUi(props: IProps) {
                     ref={inputRef}
                     className={clsx('nosubmit', {
                         isSuggestionsOpen: isSuggestionsOpen,
-                        isSuggestionsClosed: !isSuggestionsOpen,
+                        isSuggestionsClosed:
+                            !isSuggestionsOpen || !suggestions.length,
                     })}
                     value={value}
                     autoFocus
                     onChange={event => onChange(event.target.value)}
                     type="search"
                 />
+
                 {isSuggestionsOpen && (
                     <SuggestionListUi
                         suggestions={suggestions}
