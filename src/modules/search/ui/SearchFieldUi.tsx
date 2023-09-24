@@ -29,6 +29,7 @@ export default function SearchFieldUi(props: IProps) {
             className="searchForm nosubmit"
             onSubmit={event => {
                 event.preventDefault();
+                inputRef.current?.blur();
                 onSubmit(value);
                 setIsSuggestionsOpen(false);
             }}
@@ -49,6 +50,7 @@ export default function SearchFieldUi(props: IProps) {
                     <SuggestionListUi
                         suggestions={suggestions}
                         onSelect={(listValue: string) => {
+                            inputRef.current?.blur();
                             onChange(listValue);
                             onSubmit(listValue);
                             setIsSuggestionsOpen(false);
