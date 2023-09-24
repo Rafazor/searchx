@@ -13,3 +13,9 @@ export function searchElements(elements: ISearchElement[], value: string) {
         element.title.toLowerCase().startsWith(value.toLowerCase()),
     );
 }
+
+export function searchSuggestions(suggestions: ISuggestion[], value: string) {
+    return suggestions.filter(suggestion =>
+        suggestion.title.toLowerCase().startsWith(value.toLowerCase()),
+    );
+}

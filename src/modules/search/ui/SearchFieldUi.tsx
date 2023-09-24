@@ -2,16 +2,18 @@ import { useCallback, useRef, useState } from 'react';
 import SuggestionListUi from './SuggestionListUi.tsx';
 import useOutsideClick from '../../shared/hooks/useOutsideClick.ts';
 import { ISuggestion } from '../../shared/types/index.ts';
+import { clsx } from 'clsx';
 
 interface IProps {
     value: string;
     onChange: (value: string) => void;
     onSubmit: (value: string) => void;
+    removeSuggestion: (suggestion: ISuggestion) => void;
     suggestions: ISuggestion[];
 }
 
 export default function SearchFieldUi(props: IProps) {
-    const { value, onChange, onSubmit, suggestions } = props;
+    const { value, onChange, onSubmit, suggestions, removeSuggestion } = props;
     const inputRef = useRef<HTMLInputElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(true);
@@ -19,6 +21,13 @@ export default function SearchFieldUi(props: IProps) {
     const handleOutsideClick = useCallback(() => {
         setIsSuggestionsOpen(false);
     }, []);
+
+    const handleOnSelect = (listValue: string) => {
+        inputRef.current?.blur();
+        onChange(listValue);
+        onSubmit(listValue);
+        setIsSuggestionsOpen(false);
+    };
 
     useOutsideClick(wrapperRef, handleOutsideClick);
 
@@ -36,11 +45,12 @@ export default function SearchFieldUi(props: IProps) {
         >
             <div className="searchWrapper">
                 <input
-                    onFocus={() => {
-                        setIsSuggestionsOpen(true);
-                    }}
+                    onFocus={() => setIsSuggestionsOpen(true)}
                     ref={inputRef}
-                    className="nosubmit"
+                    className={clsx('nosubmit', {
+                        isSuggestionsOpen: isSuggestionsOpen,
+                        isSuggestionsClosed: !isSuggestionsOpen,
+                    })}
                     value={value}
                     autoFocus
                     onChange={event => onChange(event.target.value)}
@@ -49,12 +59,8 @@ export default function SearchFieldUi(props: IProps) {
                 {isSuggestionsOpen && (
                     <SuggestionListUi
                         suggestions={suggestions}
-                        onSelect={(listValue: string) => {
-                            inputRef.current?.blur();
-                            onChange(listValue);
-                            onSubmit(listValue);
-                            setIsSuggestionsOpen(false);
-                        }}
+                        onSelect={handleOnSelect}
+                        onRemove={removeSuggestion}
                     />
                 )}
             </div>
