@@ -27,7 +27,11 @@ export default function SearchFieldUi(props: IProps) {
             ref={wrapperRef}
             autoComplete="off"
             className="searchForm nosubmit"
-            onSubmit={() => onSubmit(value)}
+            onSubmit={event => {
+                event.preventDefault();
+                onSubmit(value);
+                setIsSuggestionsOpen(false);
+            }}
         >
             <div className="searchWrapper">
                 <input

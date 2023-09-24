@@ -8,6 +8,8 @@ interface IProps {
 export default function SuggestionListUi(props: IProps) {
     const { onSelect, suggestions } = props;
 
+    if (!suggestions.length) return null;
+
     return (
         <ul>
             {suggestions.map(suggestion => (
