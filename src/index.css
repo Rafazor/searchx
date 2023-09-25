@@ -21,7 +21,7 @@ h1 {
     padding: 2px;
     border: 1px solid currentColor;
     border-radius: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 input[type='search']::placeholder {
@@ -156,4 +156,6 @@ input.nosubmit {
 .analytics {
     text-align: start;
     width: 800px;
+    color: darkgray;
+    margin-bottom: 20px;
 }

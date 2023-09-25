@@ -15,11 +15,9 @@ export default function useSearchForm(
     const onSubmit = (value: string) => {
         if (!value) return;
 
-        const start = Date.now();
+        const start = performance.now();
+
         const elements = searchResultElements(MOCK_DATA, value);
-        const timeTaken = Date.now() - start;
-        console.log('Time taken to search: ', timeTaken);
-        setExecutionTime(timeTaken);
         setSearchElements(elements);
         setIsFirstSearch(false);
         saveSuggestion({
@@ -27,6 +25,10 @@ export default function useSearchForm(
             isHistory: true,
             id: uuidv4(),
         });
+
+        const end = performance.now();
+        const timeTaken = end - start;
+        setExecutionTime(timeTaken.toFixed(2));
     };
 
     return {
