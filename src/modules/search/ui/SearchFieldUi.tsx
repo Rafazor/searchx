@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback, useRef, useState } from 'react';
+import { FormEvent, useCallback, useRef, useState } from 'react';
 import SuggestionListUi from './SuggestionListUi.tsx';
 import useOutsideClick from '../../shared/hooks/useOutsideClick.ts';
 import { ISuggestion } from '../../shared/types/index.ts';
@@ -16,7 +16,7 @@ interface IProps {
 export default function SearchFieldUi(props: IProps) {
     const { value, onChange, onSubmit, suggestions, removeSuggestion } = props;
     const inputRef = useRef<HTMLInputElement>(null);
-    const wrapperRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLFormElement>(null);
     const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(true);
 
     const handleOutsideClick = useCallback(() => {
@@ -34,11 +34,11 @@ export default function SearchFieldUi(props: IProps) {
         console.log('submit', event);
         event.preventDefault();
         inputRef.current?.blur();
-        onSubmit(event.target[0].value);
+        onSubmit(value);
         setIsSuggestionsOpen(false);
     };
 
-    useOutsideClick(wrapperRef, handleOutsideClick);
+    useOutsideClick<HTMLFormElement>(wrapperRef, handleOutsideClick);
 
     return (
         <form

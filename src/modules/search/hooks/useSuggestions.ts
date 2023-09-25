@@ -11,7 +11,7 @@ export default function useSuggestions(
     value: string,
     suggestionsHistory: ISuggestion[],
 ) {
-    const [suggestions, setSuggestions] = useState<ISuggestion>([]);
+    const [suggestions, setSuggestions] = useState<ISuggestion[]>([]);
 
     useEffect(() => {
         if (!value) return setSuggestions(suggestionsHistory);

@@ -8,7 +8,7 @@ export default function useSearchForm(
     saveSuggestion: (suggestion: ISuggestion) => void,
     setSearchElements: (elements: ISearchElement[]) => void,
     setIsFirstSearch: (isFirstSearch: boolean) => void,
-    setExecutionTime: (number: number) => void,
+    setExecutionTime: (number: string) => void,
 ) {
     const [value, setValue] = useState('');
 
