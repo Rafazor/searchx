@@ -4,9 +4,9 @@ import SearchResultUi from '../ui/SearchResulElementUi.tsx';
 import NoResultUi from '../ui/NoResultUi.tsx';
 
 export default function SearchResultsContainer() {
-    const { searchElements, isFirsSearch } = useContext(SearchContext);
+    const { searchElements, isFirstSearch } = useContext(SearchContext);
 
-    if (!isFirsSearch && searchElements.length === 0) return <NoResultUi />;
+    if (!isFirstSearch && searchElements.length === 0) return <NoResultUi />;
 
     return (
         <div className="searchElementWrapper">

@@ -6,12 +6,12 @@ interface IProps extends PropsWithChildren<unknown> {}
 
 export default function SearchLayoutUi(props: IProps) {
     const { children } = props;
-    const { isFirsSearch } = useContext(SearchContext);
+    const { isFirstSearch } = useContext(SearchContext);
 
     return (
         <div
             className={clsx('searchLayout', {
-                searchLayoutWithoutResults: isFirsSearch,
+                searchLayoutWithoutResults: isFirstSearch,
             })}
         >
             {children}

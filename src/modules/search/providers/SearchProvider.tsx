@@ -5,7 +5,7 @@ export const SearchContext: Context<{
     searchElements: ISearchElement[];
     setSearchElements: (elements: ISearchElement[]) => void;
     setIsFirstSearch: (value: boolean) => void;
-    isFirsSearch: boolean;
+    isFirstSearch: boolean;
     executionTime: number;
     setExecutionTime: (value: number) => void;
 }> = createContext();
@@ -15,7 +15,7 @@ interface IProps extends PropsWithChildren<unknown> {}
 export default function SearchProvider(props: IProps) {
     const { children } = props;
     const [searchElements, setSearchElements] = useState<ISearchElement[]>([]);
-    const [isFirsSearch, setIsFirstSearch] = useState(true);
+    const [isFirstSearch, setIsFirstSearch] = useState(true);
     const [executionTime, setExecutionTime] = useState(0);
 
     return (
@@ -23,7 +23,7 @@ export default function SearchProvider(props: IProps) {
             value={{
                 searchElements,
                 setSearchElements,
-                isFirsSearch,
+                isFirstSearch,
                 setIsFirstSearch,
                 executionTime,
                 setExecutionTime,
