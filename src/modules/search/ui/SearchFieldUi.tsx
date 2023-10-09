@@ -31,7 +31,6 @@ export default function SearchFieldUi(props: IProps) {
     };
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        console.log('submit', event);
         event.preventDefault();
         inputRef.current?.blur();
         onSubmit(value);
